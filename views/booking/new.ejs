@@ -1,0 +1,57 @@
+<div class="row mt-5">
+    <div class="col-md-8 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">New Booking</h1>
+        <%- include ("../partials/errorMessage"); %>
+        <form action="/booking/new" method="POST">
+          <div class="form-group">
+            <label for="cust" class="form-label mt-4">Customer  </label>
+            <select name="cust">
+                <% custs.forEach(cust => { %>
+                    <% if (cust.id == bookings.cust) { %>
+                        <option selected label="<%= cust.name %>" value="<%= cust.id %>"></option>
+                    <% } else { %>
+                        <option label="<%= cust.name %>" value="<%= cust.id %>"></option>
+                    <% } %>
+                <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="site" class="form-label mt-4">Site Number</label>
+            <input
+              type="number"
+              id="site"
+              name="site"
+              class="form-control"
+              min=1
+              value="<%= bookings.site %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="arrival" class="form-label mt-4">Arrival Date</label>
+            <input
+              type="date"
+              id="arrival"
+              name="arrival"
+              class="form-control"
+              value="<%= bookings.arrival %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="departure" class="form-label mt-4">Departure Date</label>
+            <input
+              type="date"
+              id="departure"
+              name="departure"
+              class="form-control"
+              value="<%= bookings.departure %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt-4">
+            Create
+          </button>
+        </form>
+        <a href="/homepage" class="form-label mt-4">Cancel</a>
+      </div>    
+    </div>
+  </div>

@@ -1,30 +1,30 @@
 <div class="row mt-5">
     <div class="col-md-10 m-auto">
       <div class="card bg-secondary card-body">
-        <h1 class="text-center mb-3">Customers</h1>
+        <h1 class="text-center mb-3">Bookings</h1>
         <a href="/homepage">Back</a>
         <ul class="list-group">
            <table class="table table-hover text-center">
             <thread>
                 <tr class="table-active">
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Site Number</th>
+                    <th scope="col">Arrival Date</th>
+                    <th scope="col">Departure Date</th>
                     <th scope="col">Customer ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Cellphone number</th>
-                    <th scope="col">Vehicle Licence</th>
                     <th scope="col">More</th>
                 </tr>
             </thread>
             <tbody>
-                <% custs.forEach(cust => { %>
+                <% bookings.forEach(booking => { %>
                     <tr class="table-primary">
-                        <td><%= cust.id %></td>
-                        <td><%= cust.name %></td>
-                        <td><%= cust.email %></td>
-                        <td><%= cust.cell %></td>
-                        <td><%= cust.licenceplate %></td>
-                        <td><a href="/cust/<%= cust.id %>/edit">Edit</a>
-                            <form method="POST" action="/cust/<%= cust.id %>?_method=DELETE">
+                        <td><%= booking.id %></td>
+                        <td><%= booking.site %></td>
+                        <td><%= booking.arrival %></td>
+                        <td><%= booking.departure %></td>
+                        <td><%= booking.cust %></td>
+                        <td><a href="/booking/<%= booking.id %>/edit">Edit</a>
+                            <form method="POST" action="/booking/<%= booking.id %>?_method=DELETE">
                                 <button type="Submit" class="btn btn-link-dark">Delete</button>
                             </form>
                         </td>
@@ -35,4 +35,6 @@
       </div>
     </div>
 </div>
+
+
 

@@ -18,13 +18,16 @@ router.get('/', async (req, res) => {
 
 // new customers
 router.get('/new', (req, res) => {
-    res.render('cust/new', { cust: new Cust() })
+    res.render('cust/new', { cust: new Cust()})
 })
 
 //create customers, we use async because everything in Mongodb is done asynchronous
 router.post('/', async (req, res) => {
     const cust = new Cust({
-        name: req.body.name
+        name: req.body.name,
+        email: req.body.email,
+        cell: req.body.cell,
+        licenceplate: req.body.licenceplate
     })
     try {
         const newCust = await cust.save()
@@ -35,6 +38,24 @@ router.post('/', async (req, res) => {
             errorMessage: 'Error creating customer'
         })
     }
+})
+
+router.get('/:id', (req, res) => {
+    res.send('Show Customer ' + req.params.id)
+})
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const cust = Cust.findById(req.params.id)
+        res.render('cust/edit', {cust: cust })
+    } catch {
+        res.redirect('/cust')
+    }
+})
+router.put('/:id', (req, res) => {
+    res.send('Update customer ' + req.params.id)
+})
+router.delete('/:id', (req, res) => {
+    res.send('Delete customer ' + req.params.id)
 })
 
 module.exports = router
