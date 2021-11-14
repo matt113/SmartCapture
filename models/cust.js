@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Booking = require('./booking')
 
 const custSchema = new mongoose.Schema({
     name: {
@@ -10,7 +11,7 @@ const custSchema = new mongoose.Schema({
         required: true
     },
     cell: {
-        type: Number,
+        type: String,
         required: true
     },
     licenceplate: {
@@ -18,5 +19,18 @@ const custSchema = new mongoose.Schema({
         required: true
     }
 })
+
+//custSchema.pre('remove', function(next) {
+//  Booking.find({ cust: this.id }, (err, bookings) => {
+//    if (err) {
+//      next(err)
+//    } else if (bookings.length > 0) {
+//      next(new Error('This customer still has bookings.'))
+//    } else {
+//      next()
+//    }
+//  })
+//})
+
 
 module.exports = mongoose.model('Cust', custSchema)

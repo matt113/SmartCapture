@@ -6,8 +6,11 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override')
+const bcrypt = require('bcrypt')
 const session = require('express-session')
 const passport = require('passport')
+const flash = require('express-flash')
+
 
 const indexRouter = require('./routes/index')
 const custRouter = require('./routes/cust')
@@ -31,14 +34,17 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
-app.use(session({
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true
-}))
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET ,
+        resave: false,
+        saveUninitialized: false
+    })
+)
 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session())
+app.use(flash())
 
 app.use('/', indexRouter)
 app.use('/cust', custRouter)

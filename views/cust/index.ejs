@@ -2,6 +2,7 @@
     <div class="col-md-10 m-auto">
       <div class="card bg-secondary card-body">
         <h1 class="text-center mb-3">Customers</h1>
+        <%- include ("../partials/errorMessage"); %>
         <a href="/homepage">Back</a>
         <ul class="list-group">
            <table class="table table-hover text-center">
@@ -16,7 +17,7 @@
                 </tr>
             </thread>
             <tbody>
-                <% custs.forEach(cust => { %>
+                <% cust.forEach(cust => { %>
                     <tr class="table-primary">
                         <td><%= cust.id %></td>
                         <td><%= cust.name %></td>

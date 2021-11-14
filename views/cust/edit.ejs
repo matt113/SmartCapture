@@ -1,6 +1,58 @@
-<h2>Edit Customer</h2>
-<form action='/cust/<%= cust.id %>?_method=PUT' method="POST">
-    <%- include('_form_fields') %>
-    <a href="/cust">Cancel</a>
-    <button type="submit">Update</button>
-</form>
+<div class="row mt-5">
+    <div class="col-md-8 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Edit Customer</h1>
+        <%- include ("../partials/errorMessage"); %>
+        <form action="/cust/<%= cust.id %>?_method=PUT" method="POST">
+          <div class="form-group">
+            <label for="name" class="form-label mt-4">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Enter name"
+              value="<%= cust.name %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label mt-4">E-mail address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder=  "Enter Email"
+              value="<%= cust.email %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="cell" class="form-label mt-4">Cellphone Number</label>
+            <input
+              type="text"
+              id="cell"
+              name="cell"
+              class="form-control"
+              placeholder="Enter cellphone number"
+              value="<%= cust.cell %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="licenceplate" class="form-label mt-4">Vehicle licence</label>
+            <input
+              type="text"
+              id="licenceplate"
+              name="licenceplate"
+              class="form-control"
+              placeholder="Enter licenceplate"
+              value="<%= cust.licenceplate %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt-4">
+            Update
+          </button>
+        </form>
+        <a href="/cust/" class="form-label mt-4">Cancel</a>
+      </div>    
+    </div>
+  </div>

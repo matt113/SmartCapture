@@ -3,6 +3,9 @@
       <div class="card card-body">
         <h1 class="text-center mt-4">Login</h1>
         <%- include ("./partials/errorMessage"); %>
+        <% if (messages.error) { %>
+          <% messages.error %>
+        <% } %>
         <form action="/user/login" method="POST">
           <div class="form-group mt-4">
             <label for="username">Username</label>
@@ -12,7 +15,7 @@
               name="username"
               class="form-control"
               placeholder="Enter Username"
-              value="<%= users.username %>"
+              
             />
           </div>
           <div class="form-group mt-4">
@@ -23,7 +26,7 @@
               name="pass"
               class="form-control"
               placeholder="Enter Password"
-              value="<%= users.pass %>"
+              
             />
           </div>
           <button type="submit" class="btn btn-primary btn-block mt-4">

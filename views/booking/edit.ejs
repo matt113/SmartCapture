@@ -1,9 +1,9 @@
 <div class="row mt-5">
     <div class="col-md-8 m-auto">
       <div class="card card-body">
-        <h1 class="text-center mb-3">New Booking</h1>
+        <h1 class="text-center mb-3">Edit Booking</h1>
         <%- include ("../partials/errorMessage"); %>
-        <form action="/booking/new" method="POST">
+        <form action="/booking/<%= bookings.id %>?_method=PUT" method="POST">
           <div class="form-group">
             <label for="cust" class="form-label mt-4">Customer</label>
             <select name="cust">
@@ -48,10 +48,10 @@
             />
           </div>
           <button type="submit" class="btn btn-primary btn-block mt-4">
-            Create
+            Update
           </button>
         </form>
-        <a href="/homepage" class="form-label mt-4">Cancel</a>
+        <a href="/booking/" class="form-label mt-4">Cancel</a>
       </div>    
     </div>
   </div>
