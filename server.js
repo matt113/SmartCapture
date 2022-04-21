@@ -28,18 +28,21 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+//mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+mongoose.connect('mongodb+srv://user:ovWDnQEqnwyofByT@cluster0.ninp4.mongodb.net/SmartCapture?retryWrites=true&w=majority', { useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
 app.use(
     session({
-        secret: process.env.SESSION_SECRET ,
+        secret: 'secret',
         resave: false,
         saveUninitialized: false
     })
 )
+
+//process.env.SESSION_SECRET 
 
 app.use(passport.initialize());
 app.use(passport.session())

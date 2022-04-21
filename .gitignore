@@ -1,2 +1,4 @@
 .env
+DATABASE_URL = mongodb://localhost/SmartCapture
+SESSION_SECRET = secret
 node_modules
